@@ -1,12 +1,11 @@
 package euler;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.OptionalLong;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.IntStream;
 import java.util.stream.LongStream;
-import java.util.stream.Stream;
 
 public class SumOfPrime {
     private LongStream primeStreamTillRange(int limit){
@@ -41,8 +40,12 @@ public class SumOfPrime {
 
     public static void main(String[] args) {
         SumOfPrime inst = new SumOfPrime();
+        Instant start = Instant.now();
         long result = inst.sumOfPrimeTillRange(2000000);
+        System.out.println("Time taken for till range method : " + Duration.between(start,Instant.now()).toMillis());
         System.out.println(result);
+        Instant soEStart = Instant.now();
         System.out.println(inst.SumOfPrimeUsingSieveOfEratosthenes(2000000));
+        System.out.println("Time taken for till range method : " + Duration.between(soEStart,Instant.now()).toMillis());
     }
 }
